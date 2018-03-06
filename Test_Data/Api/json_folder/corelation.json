@@ -1,0 +1,7 @@
+{
+  "input":"temp-abhimanyudttt1-source-1518432636131",
+  "huntName":"abhimanyudttt1",
+  "startTime":1518209995,
+  "endTime":1518231595,
+  "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.corelation.Corelation\",\"functionName\":\"Corelation\",\"functionProperties\":\"[{\\\"name\\\":\\\"datasetName\\\",\\\"description\\\":\\\"dataset Name\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"tiktik\\\"},{\\\"name\\\":\\\"corelationFieldsMapping\\\",\\\"description\\\":\\\"Start time\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"gsi_ts:gsi_ts\\\"},{\\\"name\\\":\\\"corelatedDatasetFieldsInOutput\\\",\\\"description\\\":\\\"Correlation dataset fields in output\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"service\\\"},{\\\"name\\\":\\\"lookupInterval\\\",\\\"description\\\":\\\"Lookup interval\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"1\\\"}]\",\"order\":0}]}"
+}

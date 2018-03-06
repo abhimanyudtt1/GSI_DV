@@ -1,0 +1,7 @@
+{
+  "input":"temp-xxxxxx-source-44-1518587611558",
+  "huntName":"xxxxxx",
+  "startTime":1518209995,
+  "endTime":1518231595,
+  "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.labelannotation.LabelAnnotation\",\"functionName\":\"Label%20Annotation\",\"functionProperties\":\"[{\\\"name\\\":\\\"userFields\\\",\\\"description\\\":\\\"userFields\\\",\\\"type\\\":\\\"String\\\",\\\"displayName\\\":\\\"Columns\\\",\\\"value\\\":\\\"orig_h:src_ip\\\"},{\\\"name\\\":\\\"ibName\\\",\\\"description\\\":\\\"ibName\\\",\\\"type\\\":\\\"string\\\",\\\"displayName\\\":\\\"Catalog Dataset\\\",\\\"value\\\":\\\"assetenrichment\\\"},{\\\"name\\\":\\\"labelField\\\",\\\"description\\\":\\\"labelField\\\",\\\"type\\\":\\\"string\\\",\\\"displayName\\\":\\\"Labelled Column\\\",\\\"value\\\":\\\"name\\\"},{\\\"name\\\":\\\"labelValue\\\",\\\"description\\\":\\\"labelValue\\\",\\\"type\\\":\\\"string\\\",\\\"displayName\\\":\\\"Label Value\\\",\\\"value\\\":\\\"found\\\"},{\\\"name\\\":\\\"unknownLabelValue\\\",\\\"description\\\":\\\"unknownLabelValue\\\",\\\"type\\\":\\\"string\\\",\\\"displayName\\\":\\\"Unknown label value\\\",\\\"value\\\":\\\"false\\\"}]\",\"order\":0}]}"
+}

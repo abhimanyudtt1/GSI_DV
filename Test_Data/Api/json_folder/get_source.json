@@ -1,0 +1,8 @@
+{
+    "input":"connfinal",
+    "startTime":1518209995,
+    "endTime":1518231595,
+    "huntName":"connfinal1",
+    "dag":"{\"functionset\":[{\"functionName\":\"source\",\"function\":\"source\"}]}",
+    "description":"asdf"
+}

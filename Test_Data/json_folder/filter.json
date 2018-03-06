@@ -1,0 +1,7 @@
+{
+  "input":"temp-ahunterwillhunt-source-1518520870701",
+  "huntName":"ahunterwillhunt",
+  "startTime":1519194610,
+  "endTime":1519216210,
+  "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.filter.Filter\",\"functionName\":\"Filter\",\"functionProperties\":\"[{\\\"name\\\":\\\"whereClause\\\",\\\"description\\\":\\\"where clause for filtering\\\",\\\"type\\\":\\\"QueryBuilder-WhereClause\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"value\\\":\\\"WHERE (gsi_ts > 101200210 AND accountdomain !=  'abhimanyu'  AND (computername !=  'aa'  OR computername !=  'bb' ) AND extradata IS NOT NULL)\\\"}]\",\"order\":1}]}"
+}

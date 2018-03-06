@@ -1,0 +1,7 @@
+{
+  "input":"temp-aaa-adyodhdha-source",
+  "huntName":"aaa",
+  "functionName":"com.guavus.security.functions.corelation.Corelation",
+  "functionProperties":"[{\"name\":\"datasetName\",\"description\":\"dataset Name\",\"type\":\"string\",\"value\":\"bluecoatelite\"},{\"name\":\"corelationFieldsMapping\",\"description\":\"Start time\",\"type\":\"string\",\"value\":\"sourceNetworkAddress:c_ip\"},{\"name\":\"corelatedDatasetFieldsInOutput\",\"description\":\"Correlation dataset fields in output\",\"type\":\"string\",\"value\":\"x_rs_connection_negotiated_cipher_strength,ts,cs_username\"},{\"name\":\"lookupInterval\",\"description\":\"Lookup interval\",\"type\":\"string\",\"value\":\"1\"}]",
+  "startTime":1516084210,
+  "endTime":1516091350}

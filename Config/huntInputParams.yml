@@ -1,0 +1,207 @@
+ingestion:
+  api: "/metadatamanagementservice/v1/namespaces/default/ingest/"
+  url: "http://192.168.133.215:6774"
+  headers:
+    Content-type : "application/json"
+  parserconf_type :
+    log : 'Patterns_rdp.conf,Patterns_firewall.conf,Patterns_exchange.conf,Patterns_epo.conf,Patterns_bluecoat.conf,Patterns_ad.conf'
+    csv : 'Parser_geoip.conf,Parser_blacklist.conf'
+  dataset_suffix : "elite"
+  inputlogspath: "/tmp/"
+  inputconffile : "/opt/guavus/security/conf/"
+  tempflag : "false"
+  localdatapath : "../Test_data/logs/"
+  timedict :
+    rdp : "UNIX"
+    ad : "iso"
+    firewall : "Human"
+  default_timeformat : "Human"
+  staticib : "blacklist,geoip"
+
+liveHunt :
+  api : '/interactiveservice/rest/elasticservice/%20savehunt'
+  url : "http://192.168.133.215:6773"
+  header :
+    Content-type : "application/json"
+  play :
+    api : 'http://192.168.133.215:6773/interactiveservice/rest/elasticservice/huntaction'
+    jsonBody :
+      action : "start"
+      epochTime : None
+      huntName : "abc"
+  pause :
+    api : 'http://192.168.133.215:6773/interactiveservice/rest/elasticservice/huntaction'
+    jsonBody :
+      action : "pause"
+      epochTime : None
+      huntName : "abc"
+
+
+metadataservice:
+  api : "/metadatamanagementservice/v1/namespaces/default/data/datasets"
+  url : "http://192.168.133.215:6774"
+  headers:
+    Content-type : "application/json"
+
+interactivehunt:
+  huntname_prefix : "framework1"
+  pipelines : "corelation"
+  frequency : "3600"
+  lookupInterval : "864000"
+  iterations : 1
+  enrichment_map : "{\"exchange\": \"original_client_ip,original_server_ip\",\"ad\":\"hIp1,hIp2\"}"
+
+elasticSearch :
+  ip : 192.168.133.216
+  port : 6775
+redis :
+  host : 192.168.133.80
+
+
+pipeLine :
+  pipe1 :
+    prefix : "build54"
+    type : "interactive"
+    log : "firewall"
+    flow :
+      hunt1 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      #hunt1:
+      #  datasetName : "bluecoatelite"
+      #  corelationFieldsMapping : "sourceNetworkAddress:c_ip"
+      #  corelatedDatasetFieldsInOutput : "x_rs_connection_negotiated_cipher_strength,ts,cs_username"
+      #  lookupInterval : "1"
+      #hunt2 :
+      #  huntName : "ua"
+      #  redisHostAndPort : "192.168.133.80:6379"
+      #  redisMode : "CLUSTER"
+      #  typeOfRequest : "Interactive"
+      #  userAnnotationFields : "orig_h"
+      #hunt1:
+      #  huntName : "ad"
+      #  redisHostAndPort : "192.168.133.80:6379"
+      #  redisMode : "CLUSTER"
+      #  typeOfRequest : "interactive"
+      #hunt1 :
+      #  huntName : "generic"
+      #  userFields : "orig_h:src_ip"
+      #  ibName : "assetenrichmentted"
+      #  valueField : "name"
+      #  outputField : "mywhitelist"
+      #hunt2 :
+#        huntName : "label"
+#        userFields : "orig_h:src_ip"
+#        ibName : "assetenrichment"
+#        labelField : "name"
+#        labelValue : "found"
+#        unknownLabelValue : "false"
+#      hunt3 :
+#        huntName : "topn"
+#        field : "sum"
+#        aggregates : "sum:Sum(cert_count)"
+#        ignoreNull : "True"
+#        size : "20"
+#        groupByFields : "orig_h,resp_h"
+      hunt4 :
+        huntName : "filter"
+        #whereClause : "WHERE (cert_count =  '1'  AND gsi_ts > 0 AND (orig_p LIKE( '%22%' ) AND requested_color_depth =  '24bit' ))"
+      #hunt2 :
+      #  huntName : "corelation"
+      #hunt3 :
+      #  huntName : "topngroupby"
+
+
+
+
+defaultInputParams:
+  geoip:
+    exchange :
+      geoIBName : "geoip"
+      inputFields : "original_client_ip,original_server_ip"
+    ad :
+      geoIBName : "geoip"
+      inputFields : "hIp1,hIp2"
+
+  blacklist:
+    exchange :
+      blacklistIBName : "blacklist"
+      inputFields : "original_client_ip,original_server_ip"
+    ad :
+      blacklistIBName : "blacklist"
+      inputFields : "hIp1,hIp2"
+
+  filter :
+    exchange : "WHERE (logontype :  '3' )"
+    ad : "WHERE (logontype :  '3' )"
+  
+  topngroupby :
+    exchange :
+      groupByFields : "FieldsName1,FieldName2"
+      aggregates : "sum:Sum(cert_count)"
+      ignoreNull : "False"
+      size : 10
+      field : "sum"
+  
+  corelation :
+    bluecoat :
+      datasetName : "bluecoatelite"
+      corelationFieldsMapping : "sourceNetworkAddress:c_ip"
+      corelatedDatasetFieldsInOutput : "x_rs_connection_negotiated_cipher_strength,ts,cs_username"
+      lookupInterval : "1"
+    connfinal :
+      datasetName : "bluecoatelite"
+      corelationFieldsMapping : "sourceNetworkAddress:c_ip"
+      corelatedDatasetFieldsInOutput : "x_rs_connection_negotiated_cipher_strength,ts,cs_username"
+      lookupInterval : "1"
+
+  topn :
+    rdp :
+      field : "sum"
+      aggregates : "sum:Sum(cert_count)"
+      ignoreNull : "True"
+      size : "20"
+      groupByFields : "orig_h,resp_h"
+
+  filter :
+    firewall :
+      whereClause : "WHERE (direction =  'inbound'  AND gsi_ts > 0 AND (s_port LIKE( '%33%' ) AND service_id =  'Proxy_Port' ))"
+    rdp :
+      whereClause : "WHERE (cert_count =  '1'  AND gsi_ts > 0 AND (orig_p LIKE( '%22%' ) AND requested_color_depth =  '24bit' ))"
+  label :
+    rdp :
+      userFields : "orig_h:src_ip"
+      ibName : "assetenrichment"
+      labelField : "name"
+      labelValue : "found"
+      unknownLabelValue : "false"
+
+  generic :
+    rdp:
+      userFields : "orig_h:src_ip"
+      ibName : "assetenrichment"
+      valueField : "name"
+      outputField : "mywhitelist"
+
+  ad :
+    ad :
+      redisHostAndPort : "192.168.133.80:6379"
+      redisMode : "CLUSTER"
+      typeOfRequest : "interactive"
+
+  ua :
+    rdp :
+      huntName : "ua"
+      redisHostAndPort : "192.168.133.80:6379"
+      redisMode : "CLUSTER"
+      typeOfRequest : "Interactive"
+      userAnnotationFields : "orig_h"
+
+  prefix :
+    firewall :
+      huntName : "prefix"
+      inputFields : "dstIp"
+      iBName : "prefixib"
+      prefixLength : "32"

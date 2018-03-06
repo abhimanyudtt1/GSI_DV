@@ -1,0 +1,8 @@
+{
+  "input":"temp-test_6_hunt_abhay-exchangeabhaydutta-source",
+  "huntName":"test_6_hunt_abhay",
+  "functionName":"com.guavus.security.functions.GroupBy.GroupBy",
+  "functionProperties":"[{\"visible\":true,\"name\":\"groupByFields\",\"description\":\"not mandatory, visible, no default value, no identifier \",\"type\":\"string\",\"mandatory\":false,\"value\":\"sender\"},{\"identifier\":\"ipFields\",\"visible\":true,\"defaultValue\":\"myDefaultValue\",\"name\":\"aggregates\",\"description\":\" mandatory, visible,has default value and identifier\",\"type\":\"string\",\"mandatory\":true,\"value\":\"sum:Sum(totalBytes)\"}]",
+  "startTime":1516084221,
+  "endTime":1516091390
+}

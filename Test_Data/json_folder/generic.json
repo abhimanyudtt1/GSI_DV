@@ -1,0 +1,7 @@
+{
+  "input":"temp-abhaydutta-source-1518589413921",
+  "huntName":"abhaydutta",
+  "startTime":1518209995,
+  "endTime":1518231595,
+  "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.genericannotation.GenericAnnotation\",\"functionName\":\"Generic%20Annotation\",\"functionProperties\":\"[{\\\"name\\\":\\\"userFields\\\",\\\"description\\\":\\\"userFields\\\",\\\"type\\\":\\\"String\\\",\\\"displayName\\\":\\\"Columns\\\",\\\"value\\\":\\\"orig_h:src_ip\\\"},{\\\"name\\\":\\\"ibName\\\",\\\"description\\\":\\\"ibName\\\",\\\"type\\\":\\\"String\\\",\\\"displayName\\\":\\\"Catalog Dataset\\\",\\\"value\\\":\\\"assetenrichment\\\"},{\\\"name\\\":\\\"valueField\\\",\\\"description\\\":\\\"valueField\\\",\\\"type\\\":\\\"String\\\",\\\"displayName\\\":\\\"Lookup Column\\\",\\\"value\\\":\\\"name\\\"},{\\\"name\\\":\\\"outputField\\\",\\\"description\\\":\\\"outputField\\\",\\\"type\\\":\\\"string\\\",\\\"displayName\\\":\\\"Annotated Column\\\",\\\"value\\\":\\\"mywhitelist\\\"}]\",\"order\":0}]}"
+}

@@ -1,0 +1,6 @@
+{
+  "huntName" : "newframetest1",
+  "input" : "temp-newframetest1-firewall-source" ,
+  "functionName": "com.guavus.security.functions.geoip.GeoIP",
+  "functionProperties": "[{ \"$$hashKey\":\"object:682\", \"description\":\"Reference geoIBName\", \"name\":\"geoIBName\", \"type\":\"string\", \"value\":\"geoipreferenceib\" }, { \"$$hashKey\":\"object:683\", \"description\":\"Comma separated Ip Field Names\", \"name\":\"inputFields\", \"type\":\"string\", \"value\":\"orig_h,resp_h\" }]"
+}

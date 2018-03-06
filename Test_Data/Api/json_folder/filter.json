@@ -1,0 +1,8 @@
+{
+  "input":"temp-insepection_1-adabhaydutta-source",
+  "huntName":"insepection_1",
+  "functionName":"com.guavus.security.functions.filter.Filter",
+  "functionProperties":"[{\"name\":\"whereClause\",\"description\":\"where clause for filtering\",\"type\":\"QueryBuilder-WhereClause\",\"mandatory\":true,\"visible\":true,\"value\":\"WHERE (logontype =  '3' )\"}]",
+  "startTime":1314764800,
+  "endTime":1516091350
+}

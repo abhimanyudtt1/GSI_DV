@@ -1,0 +1,7 @@
+{
+  "input":"temp-gummybears-source-1519283935187",
+  "huntName":"gummybears",
+  "startTime":1516514200,
+  "endTime":1516525400,
+  "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.userannotation.UserAnnotation\",\"functionName\":\"UserAnnotation\",\"functionProperties\":\"[{\\\"name\\\":\\\"redisHostAndPort\\\",\\\"description\\\":\\\"The Redis host and port list\\\",\\\"type\\\":\\\"string\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"defaultValue\\\":\\\"192.168.133.6:6379\\\",\\\"value\\\":\\\"192.168.133.80:6379\\\"},{\\\"name\\\":\\\"redisMode\\\",\\\"description\\\":\\\" Redis mode single or cluster\\\",\\\"type\\\":\\\"string\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"defaultValue\\\":\\\"CLUSTER\\\",\\\"value\\\":\\\"CLUSTER\\\"},{\\\"name\\\":\\\"typeOfRequest\\\",\\\"description\\\":\\\"Interactive or live\\\",\\\"type\\\":\\\"string\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"value\\\":\\\"interactive\\\"},{\\\"name\\\":\\\"userAnnotationFields\\\",\\\"description\\\":\\\"Comma separated list for user annotation fields\\\",\\\"type\\\":\\\"string\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"value\\\":\\\"orig_h\\\"}]\",\"order\":0}]}"
+}

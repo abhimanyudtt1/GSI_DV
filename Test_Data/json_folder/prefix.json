@@ -1,0 +1,7 @@
+{
+  "input":"temp-asdfa-source-1520329413614",
+  "huntName":"asdfa",
+  "startTime":1520445593,
+  "endTime":1520467193,
+  "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.prefix.PrefixCompute\",\"functionName\":\"IP%20Prefix\",\"functionProperties\":\"[{\\\"name\\\":\\\"inputFields\\\",\\\"description\\\":\\\"Comma separated Ip Field Names\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"dstIp\\\"},{\\\"name\\\":\\\"iBName\\\",\\\"description\\\":\\\"Name of the IB\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"prefixib\\\"},{\\\"name\\\":\\\"prefixLength\\\",\\\"description\\\":\\\"Length of prefix\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"32\\\"}]\",\"order\":0}]}"
+}
