@@ -2,3 +2,5 @@ numpy
 pandas
 pandasql
 pyYAML
+elasticsearch-dsl
+elasticsearch
