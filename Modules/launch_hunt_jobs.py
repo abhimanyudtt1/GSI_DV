@@ -114,7 +114,7 @@ class HuntApi (REST):
             pass
         huntAttributes = params
         f, filename, description = imp.find_module(huntName,
-                                                   ['/'.join(os.getcwd().split('/')[:-1]) + '/huntFunctionHandler'])
+                                                   [os.getcwd() + '/huntFunctionHandler'])
         handle = imp.load_module(huntName, f, filename, description)
         function = handle.getDevAPIFunction()
         api_body = function(self,huntAttributes)
