@@ -16,7 +16,7 @@ class HuntApi (REST):
         super (HuntApi, self).__init__ ()
         self.tooldir = os.getcwd()
         if json_folder is None:
-            self.json_folder = self.tooldir + "/GSI/Test_Data/json_folder/"
+            self.json_folder = self.tooldir + "/Test_Data/json_folder/"
         self.headers = {"Content-Type": "application/json"}
         conf = configParsed()
         ip_port = conf['interactivehunt']['url']
