@@ -3,7 +3,7 @@ import yaml
 import json
 
 def getJsonDirPath():
-    return '/'.join(os.getcwd().split('/')[:-1])+'/Test_Data/json_folder/'
+    return os.getcwd()+'/Test_Data/json_folder/'
 
 
 
