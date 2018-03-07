@@ -42,7 +42,7 @@ def applyPrefix(testObj,parms):
     df = df.set_index("ts")
     df = df.sort_index()
     #ib = ib.set_index(ibField)[parms['valueField']].to_dict()
-    df['prefix_%s' % parms['inputFields']] = df.apply(lambda row : returnLable(row,'False',ib,parms['inputFields']),axis=1)
+    df['Prefix_%s' % parms['inputFields']] = df.apply(lambda row : returnLable(row,'False',ib,parms['inputFields']),axis=1)
     #reducedIB = ps.sqldf("" % (ibField), locals())
     #groupby_fields = parms['groupByFields']
     #aggregateon = parms['aggregates'].split(':')[-1].split('(')[-1].rstrip(')')
