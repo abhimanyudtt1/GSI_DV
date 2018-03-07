@@ -14,6 +14,4 @@ def comparator(df1,df2):
     df_gpby = bigDf.groupby(list(bigDf.columns))
     idx = [x[0] for x in df_gpby.groups.values() if len(x) == 1]
     bigDf = bigDf.reindex(idx)
-    print df1.head()
-    print df2.head()
-    print bigDf.head()
+    print bigDf

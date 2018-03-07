@@ -16,8 +16,8 @@ def returnLable(row,falseVal,ib,dataField):
         if ipaddress.ip_address(row[dataField]) in prefix   :
             return "True"
         else:
-            return falseVal
-
+            continue
+    return falseVal
 def changeToNetwork(x):
     if '/' in x :
         return ipaddress.ip_network(x)
@@ -39,8 +39,8 @@ def applyPrefix(testObj,parms):
     #ib = pd.DataFrame(ib)
     #dataField = parms['inputFields']
     #df['ts'] = pd.to_datetime(df['ts'], unit='s', errors='coerce')
-    df = df.set_index("ts")
-    df = df.sort_index()
+    #df = df.set_index("ts")
+    #df = df.sort_index()
     #ib = ib.set_index(ibField)[parms['valueField']].to_dict()
     df['Prefix_%s' % parms['inputFields']] = df.apply(lambda row : returnLable(row,'False',ib,parms['inputFields']),axis=1)
     #reducedIB = ps.sqldf("" % (ibField), locals())
@@ -51,6 +51,9 @@ def applyPrefix(testObj,parms):
     #df = ps.sqldf(queries, locals())
     #df = df.query(queries, inplace=False)
     print "Prefix calculation done"
+    dfCols = df.columns.tolist()
+    dfCols = [dfCols[-1]] + dfCols[:-1]
+    df = df[dfCols]
     return df
 
 
