@@ -53,23 +53,43 @@ interactivehunt:
   enrichment_map : "{\"exchange\": \"original_client_ip,original_server_ip\",\"ad\":\"hIp1,hIp2\"}"
 
 elasticSearch :
-  ip : 192.168.133.216
+  ip : 192.168.133.54
   port : 6775
 redis :
   host : 192.168.133.80
 
 
 pipeLine :
-  pipe1 :
+#  pipe1 :
+#    prefix : "build54"
+#    type : "interactive"
+#    log : "ad"
+#    flow :
+#      hunt1 :
+#        huntName : "ad"
+  pipe2 :
     prefix : "build54"
     type : "interactive"
     log : "firewall"
     flow :
       hunt1 :
+        huntName : "blacklist"
+      hunt2 :
+        huntName : "corelation"
+      hunt3 :
+        huntName : "filter"
+      hunt4 :
+        huntName : "generic"
+      hunt5 :
+        huntName : "geoip"
+      hunt6 :
+        huntName : "label"
+      hunt6 :
         huntName : "prefix"
-        inputFields : "dstIp"
-        iBName : "prefixib"
-        prefixLength : "32"
+      hunt6 :
+        huntName : "topn"
+      hunt6 :
+        huntName : "ua"
       #hunt1:
       #  datasetName : "bluecoatelite"
       #  corelationFieldsMapping : "sourceNetworkAddress:c_ip"
@@ -125,6 +145,10 @@ defaultInputParams:
     ad :
       geoIBName : "geoip"
       inputFields : "hIp1,hIp2"
+    firewall :
+      geoIBName : "geoip"
+      inputFields : "hIp1,hIp2"
+
 
   blacklist:
     exchange :
@@ -133,6 +157,10 @@ defaultInputParams:
     ad :
       blacklistIBName : "blacklist"
       inputFields : "hIp1,hIp2"
+    firewall :
+      huntName : "blacklist"
+      blacklistIBName : "blacklistib"
+      inputFields : "dstIp"
 
   filter :
     exchange : "WHERE (logontype :  '3' )"
@@ -157,9 +185,20 @@ defaultInputParams:
       corelationFieldsMapping : "sourceNetworkAddress:c_ip"
       corelatedDatasetFieldsInOutput : "x_rs_connection_negotiated_cipher_strength,ts,cs_username"
       lookupInterval : "1"
+    firewall :
+      datasetName : "bluecoatelite"
+      corelationFieldsMapping : "sourceNetworkAddress:c_ip"
+      corelatedDatasetFieldsInOutput : "x_rs_connection_negotiated_cipher_strength,ts,cs_username"
+      lookupInterval : "1"
 
   topn :
     rdp :
+      field : "sum"
+      aggregates : "sum:Sum(cert_count)"
+      ignoreNull : "True"
+      size : "20"
+      groupByFields : "orig_h,resp_h"
+    firewall :
       field : "sum"
       aggregates : "sum:Sum(cert_count)"
       ignoreNull : "True"
@@ -178,9 +217,20 @@ defaultInputParams:
       labelField : "name"
       labelValue : "found"
       unknownLabelValue : "false"
+    firewall :
+      userFields : "orig_h:src_ip"
+      ibName : "assetenrichment"
+      labelField : "name"
+      labelValue : "found"
+      unknownLabelValue : "false"
 
   generic :
     rdp:
+      userFields : "orig_h:src_ip"
+      ibName : "assetenrichment"
+      valueField : "name"
+      outputField : "mywhitelist"
+    firewall:
       userFields : "orig_h:src_ip"
       ibName : "assetenrichment"
       valueField : "name"
@@ -194,6 +244,12 @@ defaultInputParams:
 
   ua :
     rdp :
+      huntName : "ua"
+      redisHostAndPort : "192.168.133.80:6379"
+      redisMode : "CLUSTER"
+      typeOfRequest : "Interactive"
+      userAnnotationFields : "orig_h"
+    firewall :
       huntName : "ua"
       redisHostAndPort : "192.168.133.80:6379"
       redisMode : "CLUSTER"

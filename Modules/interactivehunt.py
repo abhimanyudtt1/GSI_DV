@@ -292,7 +292,11 @@ class Interactivehunt (Enrichment, LaunchHunt):
             print("")
             pipeline = map(lambda (x,y) : y['huntName'],val['flow'].items())
             for k,v in val['flow'].items():
-                defaults[v['huntName']][val['log']].update(v)
+                try :
+                    defaults[v['huntName']][val['log']].update(v)
+                except KeyError:
+                    raise Exception("Default Params Not present for %s for hunt type : %s " % (val['log'], v['huntName']))
+
             #pipeline = ':'.join(pipeline)
             if  val['type'].lower() == 'interactive':
                 print "Interactive Type of request made for the log : %s " % val['log']+val['prefix']

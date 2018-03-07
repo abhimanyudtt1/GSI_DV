@@ -4,3 +4,11 @@
   "functionName": "com.guavus.security.functions.blacklistip.BlacklistIP",
   "functionProperties": "[{ \"$$hashKey\":\"object:682\", \"description\":\"Reference Blacklist IB\", \"name\":\"blacklistIBName\", \"type\":\"string\", \"value\":\"blacklistreferenceib\" }, { \"$$hashKey\":\"object:683\", \"description\":\"Comma separated Ip Field Names\", \"name\":\"inputFields\", \"type\":\"string\", \"value\":\"srcIp,dstIp\" }]"
 }
+
+{
+  "input":"temp-asdfasdfds-source-1520403941242",
+  "huntName":"asdfasdfds",
+  "startTime":1520445593,
+  "endTime":1520467193,
+  "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.blacklistip.BlacklistIP\",\"functionName\":\"BlacklistIP\",\"functionProperties\":\"[{\\\"name\\\":\\\"blacklistIBName\\\",\\\"description\\\":\\\"Reference Blacklist IB\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"blacklistib\\\"},{\\\"name\\\":\\\"inputFields\\\",\\\"description\\\":\\\"Comma separated Ip Field Names\\\",\\\"type\\\":\\\"string\\\",\\\"value\\\":\\\"dstIp\\\"}]\",\"order\":0}]}"
+}
