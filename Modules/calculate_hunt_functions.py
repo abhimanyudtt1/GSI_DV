@@ -26,7 +26,7 @@ class Enrichment (Metadataservice, Annotation):
         ##### XXX #####
 
     def getHuntFunction(self,name):
-        f, filename, description = imp.find_module(name, ['/'.join(os.getcwd().split('/')[:-1])+'/huntFunctionHandler'])
+        f, filename, description = imp.find_module(name, [os.getcwd()+'/huntFunctionHandler'])
         handle = imp.load_module(name, f, filename, description)
         return handle.getMainFunction()
 

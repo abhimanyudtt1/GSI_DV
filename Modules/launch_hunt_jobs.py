@@ -14,7 +14,7 @@ class HuntApi (REST):
 
     def __init__(self, ip='192.168.133.53', port='6773', json_folder=None):
         super (HuntApi, self).__init__ ()
-        self.tooldir = "/".join (os.getcwd ().split ("/")[0:-1])
+        self.tooldir = os.getcwd()
         if json_folder is None:
             self.json_folder = self.tooldir + "/GSI/Test_Data/json_folder/"
         self.headers = {"Content-Type": "application/json"}
