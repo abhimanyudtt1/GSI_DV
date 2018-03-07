@@ -4,3 +4,8 @@ pandasql
 pyYAML
 elasticsearch-dsl
 elasticsearch
+requests
+netaddr
+isodate
+dateparser
+pexpect
