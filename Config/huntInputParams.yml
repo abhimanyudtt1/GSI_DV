@@ -44,7 +44,7 @@ metadataservice:
     Content-type : "application/json"
 
 interactivehunt:
-  url : "http://192.168.133.215:6774/interactiveservice/rest/elasticservice/interactivelaunch"
+  url : "http://192.168.133.215:6773/interactiveservice/rest/elasticservice/interactivelaunch"
   huntname_prefix : "framework1"
   pipelines : "corelation"
   frequency : "3600"
