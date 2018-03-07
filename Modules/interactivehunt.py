@@ -26,7 +26,7 @@ def write_to_file(filename, my_list):
 
 class Interactivehunt (Enrichment, LaunchHunt):
 
-    def __init__(self, conf='../Config/security_dv.ini'):
+    def __init__(self, conf='Config/security_dv.ini'):
         pass
         #super (Interactivehunt, self).__init__ ()
         self.ingested_logs = Ingestion ().query_dict

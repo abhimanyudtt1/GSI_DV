@@ -7,11 +7,11 @@ def getJsonDirPath():
 
 
 
-def configParsed(configFile='../Config/huntInputParams.yml'):
+def configParsed(configFile='Config/huntInputParams.yml'):
     stream = file(configFile)
     return yaml.safe_load(stream)
 
-def getConfigFlow(configFile="../Config/huntInputParams.yml"):
+def getConfigFlow(configFile="Config/huntInputParams.yml"):
     config = configParsed(configFile)
     pipeLine = config['pipeLine']
 
