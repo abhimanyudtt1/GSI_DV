@@ -6,22 +6,12 @@ def comparator(df1,df2):
         2: [],
         3: []
     }
-    try :
-        df1 = df1.reset_index().T.to_dict().values()
-    except AttributeError :
-        pass
-    try :
-        df2 = df2.reset_index().T.to_dict().values()
-        #print "DF2:",df2
-    except AttributeError:
-        pass
-    for i in df1 :
-        if i not in df2:
-            diff[2].append(i)
-        if i in df2 :
-            diff[1].append(i)
+    df1 = pd.DataFrame(df1)
+    df2 = pd.DataFrame(df2)
 
-    for i in df2 :
-        if i not in df1 :
-            diff[3].append(i)
-    return diff
+    bigDf = pd.concat([df1,df2],axis=0)
+    bigDf = bigDf.reset_index(drop=True)
+    df_gpby = bigDf.groupby(list(bigDf.columns))
+    idx = [x[0] for x in df_gpby.groups.values() if len(x) == 1]
+    bigDf = bigDf.reindex(idx)
+    print bigDf
