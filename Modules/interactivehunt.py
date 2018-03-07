@@ -178,6 +178,7 @@ class Interactivehunt (Enrichment, LaunchHunt):
                 dev_result = []
             ibname = dataset
             qa_result = testobj.getHuntFunction(v['huntName'])(testobj,params[v['huntName']][pipe['log']])
+            testobj.data_list = qa_result
             # = function(testobj, v)
             comparator(dev_result,qa_result)
         return devobj.returnLiveCall(current_huntname+'_'+"%05d" % randint(1,99999),devobj.outputdataset,"3600")
