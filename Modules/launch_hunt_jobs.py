@@ -19,7 +19,7 @@ class HuntApi (REST):
             self.json_folder = self.tooldir + "/GSI/Test_Data/json_folder/"
         self.headers = {"Content-Type": "application/json"}
         conf = configParsed()
-        ip_port = conf['liveHunt']['url']
+        ip_port = conf['interactivehunt']['url']
         self.url = ip_port
         self.current_request = None
         self.current_response = {}
