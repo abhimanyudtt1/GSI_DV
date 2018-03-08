@@ -1,11 +1,4 @@
 {
-  "huntName" : "newframetest1",
-  "input" : "temp-newframetest1-temp-newframetest1-firewall-source-com.guavus.security.functions.geoip.geoip" ,
-  "functionName": "com.guavus.security.functions.blacklistip.BlacklistIP",
-  "functionProperties": "[{ \"$$hashKey\":\"object:682\", \"description\":\"Reference Blacklist IB\", \"name\":\"blacklistIBName\", \"type\":\"string\", \"value\":\"blacklistreferenceib\" }, { \"$$hashKey\":\"object:683\", \"description\":\"Comma separated Ip Field Names\", \"name\":\"inputFields\", \"type\":\"string\", \"value\":\"srcIp,dstIp\" }]"
-}
-
-{
   "input":"temp-asdfasdfds-source-1520403941242",
   "huntName":"asdfasdfds",
   "startTime":1520445593,
