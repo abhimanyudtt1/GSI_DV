@@ -17,6 +17,7 @@ def returnLable(row,trueVal,falseVal,ib,dataField):
         return falseVal
 
 def applyFilter(testObj,parms):
+    print "===========================Running QA Compute logic for AD==========================="
     #print ("Calculating the data for filter function ")
     #data = testObj.data_list
     #df = pd.DataFrame(data)
@@ -40,6 +41,7 @@ def applyFilter(testObj,parms):
 
 
 def devQuery(devObject,huntAttributes):
+    print "===========================Running Dev call for AD==========================="
     api = '/interactiveservice/rest/elasticservice/interactivelaunch'
     jsonFile = getJsonDirPath() + 'ad.json'
     jsonFile = json.loads('\n'.join(open(jsonFile).readlines()))

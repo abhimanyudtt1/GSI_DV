@@ -17,15 +17,15 @@ def returnLable(row,trueVal,falseVal,ib,dataField):
         return falseVal
 
 def applyFilter(testObj,parms):
-    print "Calculating the data for filter function "
+    print "=========================== Running QA Compute logic for Label ==========================="
     data = testObj.data_list
     df = pd.DataFrame(data)
     ib = Metadataservice().get_static_dataset(parms['ibName'])
     ib = pd.DataFrame(ib)
     dataField,ibField = parms['userFields'].split(':')
     #df['ts'] = pd.to_datetime(df['ts'], unit='s', errors='coerce')
-    df = df.set_index("ts")
-    df = df.sort_index()
+    #df = df.set_index("ts")
+    #df = df.sort_index()
     ib = ib[ibField].to_dict().values()
     df[parms['labelField']] = df.apply(lambda row : returnLable(row,parms['labelValue'],parms['unknownLabelValue'],ib,dataField),axis=1)
     #reducedIB = ps.sqldf("" % (ibField), locals())
@@ -39,6 +39,7 @@ def applyFilter(testObj,parms):
 
 
 def devQuery(devObject,huntAttributes):
+    print "=========================== Running Dev Call for Label ==========================="
     api = '/interactiveservice/rest/elasticservice/interactivelaunch'
     jsonFile = getJsonDirPath() + 'label.json'
     jsonFile = json.loads('\n'.join(open(jsonFile).readlines()))

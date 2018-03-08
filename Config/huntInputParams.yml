@@ -53,20 +53,20 @@ interactivehunt:
   enrichment_map : "{\"exchange\": \"original_client_ip,original_server_ip\",\"ad\":\"hIp1,hIp2\"}"
 
 elasticSearch :
-  ip : 192.168.133.54
+  ip : 192.168.133.216
   port : 6775
 redis :
   host : 192.168.133.80
 
 
 pipeLine :
-#  pipe1 :
-#    prefix : "build54"
-#    type : "interactive"
-#    log : "ad"
-#    flow :
-#      hunt1 :
-#        huntName : "ad"
+  #pipe1 :
+  #  prefix : "build54"
+  #  type : "interactive"
+  #  log : "ad"
+  #  flow :
+  #    hunt1 :
+  #      huntName : "ad"
   pipe2 :
     prefix : "build54"
     type : "interactive"
@@ -75,21 +75,23 @@ pipeLine :
       hunt1 :
         huntName : "blacklist"
       hunt2 :
-        huntName : "corelation"
-      hunt3 :
         huntName : "filter"
-      hunt4 :
+      hunt3 :
         huntName : "generic"
-      hunt5 :
-        huntName : "geoip"
-      hunt6 :
+      hunt4 :
         huntName : "label"
-      hunt6 :
+      hunt5 :
         huntName : "prefix"
       hunt6 :
-        huntName : "topn"
-      hunt6 :
         huntName : "ua"
+      hunt7 :
+        huntName : "topn"
+      #hunt8 :
+      #  huntName : "geoip"
+      #hunt9 :
+      #  huntName : "corelation"
+
+
       #hunt1:
       #  datasetName : "bluecoatelite"
       #  corelationFieldsMapping : "sourceNetworkAddress:c_ip"
@@ -126,8 +128,8 @@ pipeLine :
 #        ignoreNull : "True"
 #        size : "20"
 #        groupByFields : "orig_h,resp_h"
-      hunt4 :
-        huntName : "filter"
+#      hunt4 :
+#        huntName : "filter"
         #whereClause : "WHERE (cert_count =  '1'  AND gsi_ts > 0 AND (orig_p LIKE( '%22%' ) AND requested_color_depth =  '24bit' ))"
       #hunt2 :
       #  huntName : "corelation"
@@ -147,7 +149,7 @@ defaultInputParams:
       inputFields : "hIp1,hIp2"
     firewall :
       geoIBName : "geoip"
-      inputFields : "hIp1,hIp2"
+      inputFields : "dstIp"
 
 
   blacklist:
@@ -200,10 +202,10 @@ defaultInputParams:
       groupByFields : "orig_h,resp_h"
     firewall :
       field : "sum"
-      aggregates : "sum:Sum(cert_count)"
+      aggregates : "sum:Sum(hField1)"
       ignoreNull : "True"
       size : "20"
-      groupByFields : "orig_h,resp_h"
+      groupByFields : "dstIp"
 
   filter :
     firewall :
@@ -218,10 +220,10 @@ defaultInputParams:
       labelValue : "found"
       unknownLabelValue : "false"
     firewall :
-      userFields : "orig_h:src_ip"
-      ibName : "assetenrichment"
+      userFields : "dstIp:src_ip"
+      ibName : "assetenrichmentfinal"
       labelField : "name"
-      labelValue : "found"
+      labelValue : "true"
       unknownLabelValue : "false"
 
   generic :
@@ -231,8 +233,8 @@ defaultInputParams:
       valueField : "name"
       outputField : "mywhitelist"
     firewall:
-      userFields : "orig_h:src_ip"
-      ibName : "assetenrichment"
+      userFields : "dstIp:dst_ip"
+      ibName : "assetenrichmentfinal"
       valueField : "name"
       outputField : "mywhitelist"
 
@@ -254,7 +256,7 @@ defaultInputParams:
       redisHostAndPort : "192.168.133.80:6379"
       redisMode : "CLUSTER"
       typeOfRequest : "Interactive"
-      userAnnotationFields : "orig_h"
+      userAnnotationFields : "dstIp"
 
   prefix :
     firewall :

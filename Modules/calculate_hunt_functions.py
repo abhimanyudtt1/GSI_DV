@@ -30,6 +30,16 @@ class Enrichment (Metadataservice, Annotation):
         handle = imp.load_module(name, f, filename, description)
         return handle.getMainFunction()
 
+    def getComparatorFunction(self,name):
+        f, filename, description = imp.find_module(name, [os.getcwd() + '/huntFunctionHandler'])
+        handle = imp.load_module(name, f, filename, description)
+        try :
+            func = handle.getComparator
+            return func
+        except AttributeError:
+            return None
+
+
     '''def applyblacklist(self, blacklistib='blacklist1', data_columns="srcIp"):
         dump = self.get_static_dataset (blacklistib)
         ib_dict = {}

@@ -8,7 +8,7 @@ def getDevAPIFunction():
     return devQuery
 
 def applyFilter(testObj,parms):
-    print "Calculating the data for filter function "
+    print "===========================Running QA Compute logic for Filter==========================="
     data = testObj.data_list
     df = pd.DataFrame(data)
     #df['ts'] = pd.to_datetime(df['ts'], unit='s', errors='coerce')
@@ -24,6 +24,7 @@ def applyFilter(testObj,parms):
 
 
 def devQuery(devObject,huntAttributes):
+    print "=========================== Running Dev Call for Filter ==========================="
     api = '/interactiveservice/rest/elasticservice/interactivelaunch'
     jsonFile = getJsonDirPath() + 'filter.json'
     jsonFile = json.loads('\n'.join(open(jsonFile).readlines()))

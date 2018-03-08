@@ -23,17 +23,24 @@ def changeToNetwork(x):
         return ipaddress.ip_network(x)
     else:
         if ':' in x :
-            return ipaddress.ip_network(x+'/128')
+            try :
+                return ipaddress.ip_network(x+'/128')
+            except ValueError:
+                return None
         else:
-            return ipaddress.ip_network(x+'/32')
+            try :
+                return ipaddress.ip_network(x+'/32')
+            except ValueError:
+                return None
 
 def applyPrefix(testObj,parms):
-    print "Calculating the data for Prefix function "
+    print "=========================== Running QA Compute logic for Prefix ==========================="
     data = testObj.data_list
     df = pd.DataFrame(data)
     ib = Metadataservice().get_static_dataset(parms['iBName'])
     ib = map(lambda x : x['URL/IP'],ib)
     ib = [ changeToNetwork(x) for x in ib ]
+    ib = filter(lambda x : not x == None,ib )
     #ib = map(changeToNetwork,ib)
 
     #ib = pd.DataFrame(ib)
@@ -58,6 +65,7 @@ def applyPrefix(testObj,parms):
 
 
 def devQuery(devObject,huntAttributes):
+    print "=========================== Running Dev Call for Prefix ==========================="
     api = '/interactiveservice/rest/elasticservice/interactivelaunch'
     jsonFile = getJsonDirPath() + 'prefix.json'
     jsonFile = json.loads('\n'.join(open(jsonFile).readlines()))

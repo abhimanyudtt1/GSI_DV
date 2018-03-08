@@ -5,3 +5,4 @@
   "endTime":1520045991,
   "dag":"{\"functionset\":[{\"function\":\"com.guavus.security.functions.activedirectoryib.ActiveDirectoryIB\",\"functionName\":\"ActiveDirectoryIB\",\"functionProperties\":\"[{\\\"name\\\":\\\"redisHostAndPort\\\",\\\"description\\\":\\\"The Redis host and port list\\\",\\\"type\\\":\\\"string\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"defaultValue\\\":\\\"192.168.133.150:6379\\\",\\\"value\\\":\\\"192.168.133.150:6379\\\"},{\\\"name\\\":\\\"redisMode\\\",\\\"description\\\":\\\" Redis mode single or cluster\\\",\\\"type\\\":\\\"string\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"defaultValue\\\":\\\"CLUSTER\\\",\\\"value\\\":\\\"CLUSTER\\\"},{\\\"name\\\":\\\"typeOfRequest\\\",\\\"description\\\":\\\"Interactive or live\\\",\\\"type\\\":\\\"string\\\",\\\"mandatory\\\":true,\\\"visible\\\":true,\\\"value\\\":\\\"interactive\\\"}]\",\"order\":0}]}"
 }
+

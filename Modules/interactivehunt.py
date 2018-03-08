@@ -176,11 +176,19 @@ class Interactivehunt (Enrichment, LaunchHunt):
                 dev_result =  Metadataservice().get_static_dataset(es_dataset_name)
             except:
                 dev_result = []
+                raise Exception("No Data Collected after Dev job. "
+                                "Please check - \nHuntName : %s\nlog : %s\ndataSet Output : %s"
+                                % (v['huntName'],pipe['log'],devobj.outputdataset))
             ibname = dataset
             qa_result = testobj.getHuntFunction(v['huntName'])(testobj,params[v['huntName']][pipe['log']])
             testobj.data_list = qa_result
             # = function(testobj, v)
-            comparator(dev_result,qa_result)
+
+            comp = testobj.getComparatorFunction(v['huntName'])
+            if not comp == None :
+                comp()(dev_result,qa_result)
+            else:
+                comparator(dev_result,qa_result)
         return devobj.returnLiveCall(current_huntname+'_'+"%05d" % randint(1,99999),devobj.outputdataset,"3600")
 
     def _run_validate_pipeline(self, pipeline, dataset, enrichment_fields):

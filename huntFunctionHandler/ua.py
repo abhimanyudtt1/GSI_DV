@@ -13,7 +13,7 @@ def getDevAPIFunction():
 
 def returnLable(row,ib,dataField):
     if row[dataField] in ib.keys():
-        if row['gsi_ts'] in ib[row[dataField]] :
+        if str(row['gsi_ts']) in ib[row[dataField]] :
             ibVal = ib[row[dataField]].split(',')
             ibVal = filter(lambda x : row['gsi'] in x , ibVal)[0]
             return ibVal.split('_')[0]
@@ -23,18 +23,18 @@ def returnLable(row,ib,dataField):
         return ''
 
 def applyFilter(testObj,parms):
-
+    print "=========================== Running QA Compute logic for UA ==========================="
     data = testObj.data_list
     print ("Calculating the data for filter function ")
     data = testObj.data_list
     df = pd.DataFrame(data)
     ib = r.zrange()
-    ib = map(lambda (m, n): (m, ','.join(n)), ib)
+    ib = dict(map(lambda (m, n): (m, ','.join(n)), dict(ib).items()))
     #ib = pd.DataFrame(ib)
     dataField = parms['userAnnotationFields']
     #df['ts'] = pd.to_datetime(df['ts'], unit='s', errors='coerce')
-    df = df.set_index("ts")
-    df = df.sort_index()
+    #df = df.set_index("ts")
+    #df = df.sort_index()
     #ib = ib[ibField].to_dict().values()
     df['%s_user_AD' % dataField ] = df.apply(lambda row : returnLable(row,ib,dataField),axis=1)
     #reducedIB = ps.sqldf("" % (ibField), locals())
@@ -49,6 +49,7 @@ def applyFilter(testObj,parms):
 
 
 def devQuery(devObject,huntAttributes):
+    print "=========================== Running Dev Call for UA ==========================="
     api = '/interactiveservice/rest/elasticservice/interactivelaunch'
     jsonFile = getJsonDirPath() + 'ua.json'
     jsonFile = json.loads('\n'.join(open(jsonFile).readlines()))

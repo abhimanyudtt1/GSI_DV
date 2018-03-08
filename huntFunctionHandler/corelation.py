@@ -9,8 +9,9 @@ def getDevAPIFunction():
     return devQuery
 
 def applyCorelation(self,testObj,parms):
+
     data = testObj.data_list
-    print ("Calculating the data for filter function ")
+    print "=========================== Running QA Compute logic for Corelation ==========================="
     data = testObj.data_list
     df = pd.DataFrame(data)
     #ib = r.getIbFromRedis()
@@ -34,8 +35,9 @@ def applyCorelation(self,testObj,parms):
 
 
 def devQuery(devObject,huntAttributes):
+    print "=========================== Running dev call for Corelation ==========================="
     api = '/interactiveservice/rest/elasticservice/interactivelaunch'
-    jsonFile = getJsonDirPath() + 'corelation.json'
+    jsonFile = getJsonDirPath() + 'coreletion.json'
     jsonFile = json.loads('\n'.join(open(jsonFile).readlines()))
     jsonFile["input"] = devObject.outputdataset
     jsonFile["huntName"] = devObject.enrichment_name
@@ -43,16 +45,15 @@ def devQuery(devObject,huntAttributes):
     functionProperties = dag['functionset'][0]['functionProperties']
     functionProperties = json.loads(functionProperties)
     tempFunctionProperties = []
-    for k, v in huntAttributes.items():
-        for eachItem in functionProperties:
-            if eachItem['name'] == k:
-                eachItem['value'] = v
+    for eachItem in functionProperties:
+        if eachItem['name'] in huntAttributes.keys():
+            eachItem['value'] = huntAttributes[eachItem['name']]
             tempFunctionProperties.append(eachItem)
-    functionProperties = json.dumps(tempFunctionProperties, separators=(',', ':')).replace('"', '\\"')
+    functionProperties = json.dumps(tempFunctionProperties, separators=(',', ':')) #.replace('"', '\\"')
     dag['functionset'][0]['functionProperties'] = functionProperties
     jsonFile["dag"] = json.dumps(dag)
     #jsonFile["functionProperties"] = functionProperties
     #jsonFile = setParamsInJson(jsonFile,devObject,huntAttributes)
-    print api,json.dumps(jsonFile)
+    #print api,json.dumps(jsonFile)
     return api,json.dumps(jsonFile)
 
