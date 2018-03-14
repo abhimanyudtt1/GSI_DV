@@ -70,46 +70,111 @@ pipeLine :
   pipe2 :
     prefix : "build54"
     type : "interactive"
-    log : "ad"
+    log : "firewall"
     flow :
-      hunt8 :
+      hunt1 :
+        huntName : "blacklist"
+      hunt2 :
+        huntName : "filter"
+      hunt3 :
+        huntName : "generic"
+      hunt4 :
+        huntName : "label"
+      hunt5 :
         huntName : "prefix"
-        inputFields : "sourceNetworkAddress"
-        iBName : "prefixmix"
-        prefixLength : "8"
-        # ['/8', '/24', '/29' ,'/20' ,'/16', '/32']
-      hunt24 :
-        huntName : "prefix"
-        inputFields : "sourceNetworkAddress"
-        iBName : "prefixmix"
+        inputFields : "dstIp"
+        iBName : "prefixspider32"
         prefixLength : "24"
-      hunt29 :
+      hunt5 :
         huntName : "prefix"
-        inputFields : "sourceNetworkAddress"
-        iBName : "prefixmix"
+        inputFields : "dstIp"
+        iBName : "prefixspider32"
         prefixLength : "29"
-
-      hunt20 :
+      hunt5 :
         huntName : "prefix"
-        inputFields : "sourceNetworkAddress"
-        iBName : "prefixmix"
+        inputFields : "dstIp"
+        iBName : "prefixspider32"
         prefixLength : "20"
 
-      hunt16 :
+      hunt5 :
         huntName : "prefix"
-        inputFields : "sourceNetworkAddress"
-        iBName : "prefixmix"
+        inputFields : "dstIp"
+        iBName : "prefixspider32"
         prefixLength : "16"
 
-      hunt32 :
+      hunt5 :
         huntName : "prefix"
-        inputFields : "sourceNetworkAddress"
-        iBName : "prefixmix"
+        inputFields : "dstIp"
+        iBName : "prefixspider32"
         prefixLength : "32"
-#      hunt10 :
-#        huntName : "ua"
-#      hunt11 :
-#        huntName : "topn"
+
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixspider32"
+        prefixLength : "32"
+
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+
+      hunt5 :
+        huntName : "prefix"
+        inputFields : "dstIp"
+        iBName : "prefixib"
+        prefixLength : "32"
+
+      hunt10 :
+        huntName : "ua"
+      hunt11 :
+        huntName : "topn"
       #hunt8 :
       #  huntName : "geoip"
       #hunt9 :
@@ -288,8 +353,3 @@ defaultInputParams:
       inputFields : "dstIp"
       iBName : "prefixib"
       prefixLength : "32"
-    ad :
-      huntName : "prefix"
-      inputFields : "sourceNetworkAddress"
-      iBName : "prefixmix"
-      prefixLength : "8"
